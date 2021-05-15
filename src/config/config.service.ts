@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { parse } from 'dotenv';
 
-//obtener el puerto dependiendo el ambiente de desarrollo
+//obtener las variables de entorno
 export class ConfigService {
 	private readonly envConfig: { [key: string]: string };
 
@@ -9,8 +9,8 @@ export class ConfigService {
 		const isDevelopmentEnv = process.env.NODE_ENV !== 'production';
 
 		if (isDevelopmentEnv) {
-			const envFilePath = `${__dirname}/../../.env`;
-			const existPath = fs.existsSync(envFilePath);
+			const envFilePath: string = `${__dirname}/../../.env`;
+			const existPath: boolean = fs.existsSync(envFilePath);
 
 			if (!existPath) {
 				console.log('.env file does not exist');
